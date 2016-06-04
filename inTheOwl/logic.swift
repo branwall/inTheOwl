@@ -34,3 +34,18 @@ func getRelativeScale(screenThingy: CGFloat, itemThingy: CGFloat, desiredRatio: 
     return desiredRatio * screenThingy / itemThingy
 }
 
+func force() -> CGVector {
+    let yBoost: Double = Double(1.0 * Float(cannonPower))
+    
+    let s = sin(GLKMathDegreesToRadians(Float(cannonAngle)))
+    let c = cos(GLKMathDegreesToRadians(Float(cannonAngle)))
+    
+    let x = c * 100
+    let y = s * 100
+    
+    let xS: Double = Double(x * Float(cannonPower))
+    let yS: Double = Double(y * Float(cannonPower))
+    
+    let v = CGVector(dx: xS, dy: yS + yBoost)
+    return v
+}

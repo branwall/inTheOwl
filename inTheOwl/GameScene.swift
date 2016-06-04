@@ -32,7 +32,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         b1.position = CGPoint(x:CGRectGetMaxX(self.frame) - b1.size.width, y:CGRectGetMidY(self.frame))
         b1.name = "upButton1"
         b1.physicsBody = nil
+        
+        let b2 = SKSpriteNode(imageNamed: "myAssets/button1.png")
+        b2.xScale = b1.xScale
+        b2.yScale = b1.xScale
+        b2.position = CGPoint(x:b1.position.x, y:b1.position.y - b2.size.height)
+        b2.name = "downButton1"
+        
         self.addChild(b1)
+        self.addChild(b2)
         
     }
     func createCannon(){
@@ -70,11 +78,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.locationInNode(self)
             
             let b1 = self.childNodeWithName("upButton1") as! SKSpriteNode
+            let b2 = self.childNodeWithName("downButton1") as! SKSpriteNode
             if b1.containsPoint(location){
                 adjustAngle(5)
                 adjustPower(2)
+            } else if b2.containsPoint(location) {
+                adjustAngle(-5)
+                adjustPower(-2)
             } else {
                 let x = self.childNodeWithName("owl") as! SKSpriteNode
+                
                 x.physicsBody?.applyImpulse(CGVector(dx: 1000, dy: 100))
                 
             }
