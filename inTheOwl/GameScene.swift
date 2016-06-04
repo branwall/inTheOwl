@@ -33,7 +33,7 @@ class GameScene: SKScene {
         
     }
     func createCannon(){
-        let c1S = getRelativeScale(scene!.size.width, itemThingy: can1.size.width, desiredRatio: 0.4)
+        let c1S = getRelativeScale(scene!.size.width, itemThingy: can1.size.width, desiredRatio: 0.3)
         can1.xScale = c1S
         can1.yScale = c1S
         can1.position = CGPoint(x:CGRectGetMinX(self.frame) + can1.size.width/2, y:CGRectGetMinY(self.frame) + can1.size.height/2)
