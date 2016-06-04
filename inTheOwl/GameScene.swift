@@ -41,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         can1.yScale = c1S
         can1.position = CGPoint(x:CGRectGetMinX(self.frame) + can1.size.width/2, y:CGRectGetMinY(self.frame) + can1.size.height/2)
         can1.physicsBody = nil
+        can1.anchorPoint = CGPoint(x: 0.27, y: 0.2)
         self.addChild(can1)
     }
     func createOwl(){
@@ -50,7 +51,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         x.xScale = c1S
         x.yScale = c1S
         x.physicsBody = SKPhysicsBody(texture: x.texture! , size: x.size)
+        x.name = "owl"
         self.addChild(x)
+        
     }
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -70,6 +73,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if b1.containsPoint(location){
                 adjustAngle(5)
                 adjustPower(2)
+            } else {
+                let x = self.childNodeWithName("owl") as! SKSpriteNode
+                x.physicsBody?.applyImpulse(CGVector(dx: 1000, dy: 100))
+                
             }
             
             /*let sprite = SKSpriteNode(imageNamed:"Spaceship")
@@ -90,5 +97,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Called before each frame is rendered */
         let l = self.childNodeWithName("mainLabel") as! SKLabelNode
         l.text = "power: \(cannonPower) || angle: \(cannonAngle)"
+        can1.zRotation = CGFloat(GLKMathDegreesToRadians(Float(cannonAngle)))
     }
 }
