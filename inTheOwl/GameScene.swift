@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     let can1 = SKSpriteNode(imageNamed: "myAssets/cannon1.png")
     
     func createLabels(){
@@ -20,6 +20,8 @@ class GameScene: SKScene {
         self.addChild(myLabel)
         
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsWorld.contactDelegate = self
+        
         
     }
     func createButtons(){
@@ -29,6 +31,7 @@ class GameScene: SKScene {
         b1.yScale = b1S
         b1.position = CGPoint(x:CGRectGetMaxX(self.frame) - b1.size.width, y:CGRectGetMidY(self.frame))
         b1.name = "upButton1"
+        b1.physicsBody = nil
         self.addChild(b1)
         
     }
@@ -37,16 +40,24 @@ class GameScene: SKScene {
         can1.xScale = c1S
         can1.yScale = c1S
         can1.position = CGPoint(x:CGRectGetMinX(self.frame) + can1.size.width/2, y:CGRectGetMinY(self.frame) + can1.size.height/2)
+        can1.physicsBody = nil
         self.addChild(can1)
     }
     func createOwl(){
-        
+        let x = SKSpriteNode(imageNamed: "myAssets/cannon1.png")
+        x.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        let c1S = getRelativeScale(scene!.size.width, itemThingy: can1.size.width, desiredRatio: 0.1)
+        x.xScale = c1S
+        x.yScale = c1S
+        x.physicsBody = SKPhysicsBody(texture: x.texture! , size: x.size)
+        self.addChild(x)
     }
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         createLabels()
         createButtons()
         createCannon()
+        createOwl()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
