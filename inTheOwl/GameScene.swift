@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 let x = self.childNodeWithName("owl") as! SKSpriteNode
                 
-                x.physicsBody?.applyImpulse(CGVector(dx: 1000, dy: 100))
+                x.physicsBody?.applyImpulse(force())
                 
             }
             

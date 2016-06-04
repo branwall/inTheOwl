@@ -40,8 +40,8 @@ func force() -> CGVector {
     let s = sin(GLKMathDegreesToRadians(Float(cannonAngle)))
     let c = cos(GLKMathDegreesToRadians(Float(cannonAngle)))
     
-    let x = c * 100
-    let y = s * 100
+    let x = c * 10
+    let y = s * 10
     
     let xS: Double = Double(x * Float(cannonPower))
     let yS: Double = Double(y * Float(cannonPower))
