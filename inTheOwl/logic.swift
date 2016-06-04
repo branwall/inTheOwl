@@ -33,3 +33,4 @@ func adjustPower(by: Int){
 func getRelativeScale(screenThingy: CGFloat, itemThingy: CGFloat, desiredRatio: CGFloat)->CGFloat {
     return desiredRatio * screenThingy / itemThingy
 }
+

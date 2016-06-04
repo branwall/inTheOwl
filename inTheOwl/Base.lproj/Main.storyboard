@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86Z-pe-r4S">
-                                <rect key="frame" x="131" y="366" width="112" height="30"/>
+                                <rect key="frame" x="131" y="565" width="112" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="S4H-hQ-GPH"/>
                                     <constraint firstAttribute="width" constant="112" id="SgF-5H-QhT"/>
@@ -57,7 +57,7 @@
                             <constraint firstItem="86Z-pe-r4S" firstAttribute="centerX" secondItem="Nl0-wM-HeA" secondAttribute="centerX" id="bT9-gK-Eid"/>
                             <constraint firstItem="PD4-HI-25V" firstAttribute="top" secondItem="x8S-gq-TMu" secondAttribute="bottom" constant="8" id="hBp-rp-xu8"/>
                             <constraint firstItem="aUy-OB-rj9" firstAttribute="centerX" secondItem="Nl0-wM-HeA" secondAttribute="centerX" id="srG-bS-fXM"/>
-                            <constraint firstItem="SzT-2a-6ZU" firstAttribute="top" secondItem="86Z-pe-r4S" secondAttribute="bottom" constant="271" id="wtH-EJ-8ae"/>
+                            <constraint firstItem="SzT-2a-6ZU" firstAttribute="top" secondItem="86Z-pe-r4S" secondAttribute="bottom" constant="72" id="wtH-EJ-8ae"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

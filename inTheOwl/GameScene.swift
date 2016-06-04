@@ -18,6 +18,9 @@ class GameScene: SKScene {
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         myLabel.name = "mainLabel"
         self.addChild(myLabel)
+        
+        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        
     }
     func createButtons(){
         let b1 = SKSpriteNode(imageNamed: "myAssets/button1.png")
