@@ -9,6 +9,8 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    let can1 = SKSpriteNode(imageNamed: "myAssets/cannon1.png")
+    
     func createLabels(){
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello worolold"
@@ -28,7 +30,11 @@ class GameScene: SKScene {
         
     }
     func createCannon(){
-        
+        let c1S = getRelativeScale(scene!.size.width, itemThingy: can1.size.width, desiredRatio: 0.4)
+        can1.xScale = c1S
+        can1.yScale = c1S
+        can1.position = CGPoint(x:CGRectGetMinX(self.frame) + can1.size.width/2, y:CGRectGetMinY(self.frame) + can1.size.height/2)
+        self.addChild(can1)
     }
     func createOwl(){
         
@@ -37,6 +43,7 @@ class GameScene: SKScene {
         /* Setup your scene here */
         createLabels()
         createButtons()
+        createCannon()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
