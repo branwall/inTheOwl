@@ -14,6 +14,8 @@
 		5E1236391D032E2500AE5C1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E1236371D032E2500AE5C1F /* Main.storyboard */; };
 		5E12363B1D032E2500AE5C1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E12363A1D032E2500AE5C1F /* Assets.xcassets */; };
 		5E12363E1D032E2500AE5C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E12363C1D032E2500AE5C1F /* LaunchScreen.storyboard */; };
+		5EE9717A1D036E9900914789 /* logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE971791D036E9900914789 /* logic.swift */; };
+		5EE9717C1D036F7600914789 /* myAssets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE9717B1D036F7600914789 /* myAssets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		5E12363A1D032E2500AE5C1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E12363D1D032E2500AE5C1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E12363F1D032E2500AE5C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EE971791D036E9900914789 /* logic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logic.swift; sourceTree = "<group>"; };
+		5EE9717B1D036F7600914789 /* myAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = myAssets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				5E1236311D032E2400AE5C1F /* GameScene.sks */,
 				5E1236331D032E2400AE5C1F /* GameScene.swift */,
 				5E1236351D032E2400AE5C1F /* GameViewController.swift */,
+				5EE971791D036E9900914789 /* logic.swift */,
+				5EE9717B1D036F7600914789 /* myAssets */,
 				5E1236371D032E2500AE5C1F /* Main.storyboard */,
 				5E12363A1D032E2500AE5C1F /* Assets.xcassets */,
 				5E12363C1D032E2500AE5C1F /* LaunchScreen.storyboard */,
@@ -128,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE9717C1D036F7600914789 /* myAssets in Resources */,
 				5E1236321D032E2400AE5C1F /* GameScene.sks in Resources */,
 				5E12363E1D032E2500AE5C1F /* LaunchScreen.storyboard in Resources */,
 				5E12363B1D032E2500AE5C1F /* Assets.xcassets in Resources */,
@@ -142,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE9717A1D036E9900914789 /* logic.swift in Sources */,
 				5E1236341D032E2400AE5C1F /* GameScene.swift in Sources */,
 				5E1236361D032E2400AE5C1F /* GameViewController.swift in Sources */,
 				5E1236301D032E2400AE5C1F /* AppDelegate.swift in Sources */,
@@ -296,6 +304,7 @@
 				5E1236441D032E2500AE5C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
