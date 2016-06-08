@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 var cannonAngle: Int = 0
-var cannonPower: Int = 0
+var cannonPower: Int = 50
 
 let cannonMax = 90
 let cannonMin = 0
@@ -40,8 +40,8 @@ func force() -> CGVector {
     let s = sin(GLKMathDegreesToRadians(Float(cannonAngle)))
     let c = cos(GLKMathDegreesToRadians(Float(cannonAngle)))
     
-    let x = c * 10
-    let y = s * 10
+    let x = c * 5
+    let y = s * 5
     
     let xS: Double = Double(x * Float(cannonPower))
     let yS: Double = Double(y * Float(cannonPower))

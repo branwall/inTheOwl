@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+
 let bitOwl: UInt32 = 1
 let bitWall: UInt32 = 1 << 1
 var image: UIImage = UIImage(named: "myAssets/cannonball.png")!
@@ -98,14 +99,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let x = SKSpriteNode(texture: SKTexture(image: image))
         x.position = can1.position //CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        var ratio: CGFloat = 0.1
+        var ratio: CGFloat = 0.05
         if custom {
-            ratio /= 10
+            ratio /= 6.5
         }
         let c1S = getRelativeScale(scene!.size.height, itemThingy: can1.size.height, desiredRatio: ratio)
         x.xScale = c1S
         x.yScale = c1S
         x.physicsBody = SKPhysicsBody(texture: x.texture! , size: x.size)
+        if custom {
+            x.physicsBody?.density *= 1
+        }
         x.name = "owl"
         x.physicsBody?.categoryBitMask = bitOwl
         x.physicsBody?.contactTestBitMask = bitWall
@@ -255,6 +259,17 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return result
     }
+    var rounded: UIImage? {
+        let imageView = UIImageView(image: self)
+        imageView.layer.cornerRadius = min(size.height/2, size.width/2)
+        imageView.layer.masksToBounds = true
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.renderInContext(context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
 }
 
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -277,6 +292,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             image = pickedImage.circle!
+            //= UIImage(named: "myAssets/cannonball.png").size
             custom = true
         }
         
@@ -303,4 +319,5 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         return true
     }
+
 }
