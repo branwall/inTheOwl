@@ -10,6 +10,8 @@ import SpriteKit
 
 let bitOwl: UInt32 = 1
 let bitWall: UInt32 = 1 << 1
+var image: UIImage = UIImage(named: "myAssets/cannonball.png")!
+var custom = false
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     let can1 = SKSpriteNode(imageNamed: "myAssets/cannon1.png")
@@ -83,11 +85,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         can1.physicsBody = nil
         can1.anchorPoint = CGPoint(x: 0.27, y: 0.2)
         self.addChild(can1)
+        
+        let s1 = SKSpriteNode(imageNamed: "myAssets/spikes.png")
+        s1.xScale = getRelativeScale(self.frame.width, itemThingy: s1.size.width, desiredRatio: 1)
+        s1.yScale = getRelativeScale(self.frame.height, itemThingy: s1.size.height, desiredRatio: 0.1)
+        s1.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMinY(self.frame) + s1.size.height / 2)
+        s1.physicsBody = nil
+        self.addChild(s1)
     }
     func createOwl() -> SKSpriteNode{
-        let x = SKSpriteNode(imageNamed: "myAssets/cannon1.png")
+        
+        
+        let x = SKSpriteNode(texture: SKTexture(image: image))
         x.position = can1.position //CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        let c1S = getRelativeScale(scene!.size.width, itemThingy: can1.size.width, desiredRatio: 0.1)
+        var ratio: CGFloat = 0.1
+        if custom {
+            ratio /= 10
+        }
+        let c1S = getRelativeScale(scene!.size.height, itemThingy: can1.size.height, desiredRatio: ratio)
         x.xScale = c1S
         x.yScale = c1S
         x.physicsBody = SKPhysicsBody(texture: x.texture! , size: x.size)
@@ -221,5 +236,71 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let l = self.childNodeWithName("mainLabel") as! SKLabelNode
         l.text = "power: \(cannonPower) || angle: \(cannonAngle)"
         can1.zRotation = CGFloat(GLKMathDegreesToRadians(Float(cannonAngle)))
+    }
+    
+}
+
+extension UIImage {
+    var circle: UIImage? {
+        let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
+        imageView.contentMode = .ScaleAspectFill
+        imageView.image = self
+        imageView.layer.cornerRadius = square.width/2
+        imageView.layer.masksToBounds = true
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.renderInContext(context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
+}
+
+class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    let imagePicker = UIImagePickerController()
+    override func viewDidLoad() {
+        imagePicker.delegate = self
+        
+        /*let value = UIInterfaceOrientation.LandscapeLeft.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()*/
+        
+    }
+    @IBAction func cafc(sender: AnyObject) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        //imagePicker.
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            image = pickedImage.circle!
+            custom = true
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.AllButUpsideDown
+    }
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if identifier == "click2play" {
+            let value = UIInterfaceOrientation.LandscapeLeft.rawValue
+            UIDevice.currentDevice().setValue(value, forKey: "orientation")
+            UIViewController.attemptRotationToDeviceOrientation()
+        }
+        
+        
+        return true
     }
 }

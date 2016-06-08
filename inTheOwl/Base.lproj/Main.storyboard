@@ -8,7 +8,7 @@
         <!--Menu View Controller-->
         <scene sceneID="k15-Ol-WYV">
             <objects>
-                <viewController id="O7i-aV-1OO" customClass="MenuViewController" sceneMemberID="viewController">
+                <viewController id="O7i-aV-1OO" customClass="MenuViewController" customModule="inTheOwl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x8S-gq-TMu"/>
                         <viewControllerLayoutGuide type="bottom" id="SzT-2a-6ZU"/>
@@ -35,7 +35,7 @@
                                 </constraints>
                                 <state key="normal" title="click 2 play"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="nP3-fU-ugL"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="click2play" id="nP3-fU-ugL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86Z-pe-r4S">
@@ -47,6 +47,13 @@
                                 <state key="normal" title="go to game over"/>
                                 <connections>
                                     <segue destination="sxK-Ez-VcN" kind="show" id="8am-Go-1ep"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HD-eI-Ayg">
+                                <rect key="frame" x="91" y="164" width="192" height="30"/>
+                                <state key="normal" title="choose a freakin cannonball"/>
+                                <connections>
+                                    <action selector="cafc:" destination="O7i-aV-1OO" eventType="touchUpInside" id="7OX-Uh-fiV"/>
                                 </connections>
                             </button>
                         </subviews>
